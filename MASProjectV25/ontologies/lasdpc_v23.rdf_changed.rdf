@@ -1,0 +1,508 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:smartlasdpc="http://www.icmc.usp.br/smartlasdpc#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://www.icmc.usp.br/smartlasdpc"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#StudentUnderground">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Student"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#RackFirewall">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Rack"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Effect"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#ActivityUnder"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetPC">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Asset"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#ActivityPost"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#BasicService"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#User"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#ScientificResearch">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#ActivityUnder"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#RackCosmos">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Rack"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#SensorPresence">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Sensor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Device"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#SensorCO2">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Sensor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#RackHalley">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Rack"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetAlarm">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Asset"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetLamp">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Asset"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetDoor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Asset"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Asset">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Device"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#RackAndromeda">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Rack"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Course">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#ActivityUnder"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Room"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Student">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#User"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#System"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetHeater">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Asset"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Master">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#ActivityPost"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetServer">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Asset"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetWindow">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Asset"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Doctorate">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#ActivityPost"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Laboratory"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Sensor">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Device"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetAirConditioning">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Asset"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Professor">
+    <owl:disjointWith rdf:resource="http://www.icmc.usp.br/smartlasdpc#Student"/>
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#User"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#SensorTemperature">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Sensor"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#DataCenter"/>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#StudentPostgraduate">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Student"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetTv">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Asset"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#SensorHumidity">
+    <rdfs:subClassOf rdf:resource="http://www.icmc.usp.br/smartlasdpc#Sensor"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#Rol"/>
+  <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#installedIn">
+    <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#Room"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#Device"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#studyingIn">
+    <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#ActivityPost"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#StudentPostgraduate"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#locatedIn">
+    <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#Room"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#DataCenter"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#askForService">
+    <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#BasicService"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#User"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#participateIn">
+    <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#Laboratory"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#User"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#contain">
+    <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#Rack"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#DataCenter"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#matriculatedIn">
+    <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#ActivityUnder"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#StudentUnderground"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#temp_value">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <owl:onProperty rdf:resource="http://www.icmc.usp.br/smartlasdpc#temp_value"/>
+      </owl:Restriction>
+    </rdfs:domain>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#age">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#User"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#has_occupancy_status"/>
+  <owl:DatatypeProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#has_value">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#Sensor"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#name">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#User"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#has_state">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#AssetLamp"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  </owl:DatatypeProperty>
+  <smartlasdpc:SensorHumidity rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_humidity7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorHumidity>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp15">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn>
+      <smartlasdpc:Room rdf:about="http://www.icmc.usp.br/smartlasdpc#room1006">
+        <smartlasdpc:has_occupancy_status>unoccupied</smartlasdpc:has_occupancy_status>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+      </smartlasdpc:Room>
+    </smartlasdpc:installedIn>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetWindow rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_window3">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetWindow>
+  <smartlasdpc:SensorTemperature rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_temperature7">
+    <smartlasdpc:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >23.19</smartlasdpc:has_value>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorTemperature>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp1">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:SensorHumidity rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_humidity6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorHumidity>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp9">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetAirConditioning rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_aircond1">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetAirConditioning>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp14">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetWindow rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_window2">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetWindow>
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#SensorCO2"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#SensorHumidity"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#SensorPresence"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#SensorTemperature"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+  <smartlasdpc:AssetAirConditioning rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_aircond2">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetAirConditioning>
+  <smartlasdpc:SensorHumidity rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_humidity5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorHumidity>
+  <smartlasdpc:SensorTemperature rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_temperature1">
+    <smartlasdpc:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >23.72</smartlasdpc:has_value>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorTemperature>
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#RackAndromeda"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#RackCosmos"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#RackFirewall"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#RackHalley"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+  <smartlasdpc:AssetWindow rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_window1">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetWindow>
+  <smartlasdpc:Room rdf:about="http://www.icmc.usp.br/smartlasdpc#room1008">
+    <smartlasdpc:has_occupancy_status>unoccupied</smartlasdpc:has_occupancy_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:Room>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp3">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetWindow rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_window9">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetWindow>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp13">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetAirConditioning rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_aircond3">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetAirConditioning>
+  <smartlasdpc:SensorHumidity rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_humidity4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorHumidity>
+  <owl:AllDisjointProperties>
+    <owl:members rdf:parseType="Collection">
+      <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#contain"/>
+      <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#installedIn"/>
+      <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#locatedIn"/>
+      <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#participateIn"/>
+    </owl:members>
+  </owl:AllDisjointProperties>
+  <smartlasdpc:SensorTemperature rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_temperature2">
+    <smartlasdpc:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >24.36</smartlasdpc:has_value>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorTemperature>
+  <smartlasdpc:SensorTemperature rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_temperature_outside">
+    <smartlasdpc:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >22.94</smartlasdpc:has_value>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorTemperature>
+  <smartlasdpc:AssetTv rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_tv1">
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetTv>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp2">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetWindow rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_window8">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetWindow>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp12">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetAirConditioning rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_aircond4">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetAirConditioning>
+  <smartlasdpc:SensorHumidity rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_humidity3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorHumidity>
+  <smartlasdpc:SensorTemperature rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_temperature3">
+    <smartlasdpc:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >25.33</smartlasdpc:has_value>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorTemperature>
+  <smartlasdpc:AssetDoor rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_door_datacenter">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetDoor>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp5">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp11">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetWindow rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_window7">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetWindow>
+  <smartlasdpc:AssetAirConditioning rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_aircond5">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetAirConditioning>
+  <rdf:Description rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_heat1">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+  </rdf:Description>
+  <smartlasdpc:SensorHumidity rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_humidity2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorHumidity>
+  <smartlasdpc:AssetWindow rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_window6">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetWindow>
+  <smartlasdpc:SensorTemperature rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_temperature4">
+    <smartlasdpc:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >20.35</smartlasdpc:has_value>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorTemperature>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp4">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp10">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:SensorPresence rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_presence2">
+    <smartlasdpc:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_value>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorPresence>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp8">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetDoor rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_door_lab1006">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetDoor>
+  <smartlasdpc:SensorHumidity rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_humidity1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorHumidity>
+  <smartlasdpc:AssetWindow rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_window5">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetWindow>
+  <smartlasdpc:SensorTemperature rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_temperature5">
+    <smartlasdpc:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >25.33</smartlasdpc:has_value>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorTemperature>
+  <smartlasdpc:SensorPresence rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_presence1">
+    <smartlasdpc:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_value>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorPresence>
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetAirConditioning"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetAlarm"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetDoor"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetLamp"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetPC"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetServer"/>
+      <owl:Class rdf:about="http://www.icmc.usp.br/smartlasdpc#AssetWindow"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+  <smartlasdpc:AssetHeater rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_heater1">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"
+    >-1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetHeater>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp7">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+  <smartlasdpc:AssetWindow rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_window4">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetWindow>
+  <smartlasdpc:SensorTemperature rdf:about="http://www.icmc.usp.br/smartlasdpc#sensor_temperature6">
+    <smartlasdpc:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >25.54</smartlasdpc:has_value>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:SensorTemperature>
+  <smartlasdpc:AssetLamp rdf:about="http://www.icmc.usp.br/smartlasdpc#asset_lamp6">
+    <smartlasdpc:has_state rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >0</smartlasdpc:has_state>
+    <smartlasdpc:installedIn rdf:resource="http://www.icmc.usp.br/smartlasdpc#room1006"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </smartlasdpc:AssetLamp>
+</rdf:RDF>

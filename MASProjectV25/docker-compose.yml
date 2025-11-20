@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  masproject-admin:
+    image: masproject
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:      
+    container_name: masproject-admin
+    restart: unless-stopped

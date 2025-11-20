@@ -1,0 +1,951 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.icmc.usp.br/smartlasdpc#"
+     xml:base="http://www.icmc.usp.br/smartlasdpc"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:demo="http://www.example.com.br/demo#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:demox="http://www.ex.com/demox/"
+     xmlns:smartlasdpc="http://www.icmc.usp.br/smartlasdpc#">
+    <owl:Ontology rdf:about="http://www.icmc.usp.br/smartlasdpc"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.com.br/demo#askForService -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.com.br/demo#askForService">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#User"/>
+        <rdfs:range rdf:resource="http://www.example.com.br/demo#BasicService"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.com.br/demo#contain -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.com.br/demo#contain">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#DataCenter"/>
+        <rdfs:range rdf:resource="http://www.example.com.br/demo#Rack"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.com.br/demo#installedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.com.br/demo#installedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#Device"/>
+        <rdfs:range rdf:resource="http://www.example.com.br/demo#Room"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.com.br/demo#locatedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.com.br/demo#locatedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#DataCenter"/>
+        <rdfs:range rdf:resource="http://www.example.com.br/demo#Room"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.com.br/demo#matriculatedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.com.br/demo#matriculatedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#StudentUnderground"/>
+        <rdfs:range rdf:resource="http://www.example.com.br/demo#ActivityUnder"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.com.br/demo#participateIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.com.br/demo#participateIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#User"/>
+        <rdfs:range rdf:resource="http://www.example.com.br/demo#Laboratory"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.com.br/demo#studyingIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.com.br/demo#studyingIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#StudentPostgraduate"/>
+        <rdfs:range rdf:resource="http://www.example.com.br/demo#ActivityPost"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.com.br/demo#age -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.com.br/demo#age">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.com.br/demo#has_state -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.com.br/demo#has_state">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.com.br/demo#has_value -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.com.br/demo#has_value">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#Sensor"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.com.br/demo#name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.com.br/demo#name">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.com.br/demo#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.com.br/demo#temp_value -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.com.br/demo#temp_value">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.example.com.br/demo#temp_value"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.com.br/demo#ActivityPost -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#ActivityPost"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#ActivityUnder -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#ActivityUnder"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#Asset -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Asset">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#AssetAirConditioning -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#AssetAirConditioning">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Asset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#AssetAlarm -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#AssetAlarm">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Asset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#AssetDoor -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#AssetDoor">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Asset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#AssetLamp -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#AssetLamp">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Asset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#AssetPC -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#AssetPC">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Asset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#AssetServer -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#AssetServer">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Asset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#AssetTv -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#AssetTv">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Asset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#AssetWindow -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#AssetWindow">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Asset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#BasicService -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#BasicService"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#Course -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Course">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#ActivityUnder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#DataCenter -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#DataCenter"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#Device -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Device"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#Doctorate -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Doctorate">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#ActivityPost"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#Effect -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Effect"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#Laboratory -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Laboratory"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#Master -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Master">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#ActivityPost"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#Professor -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Professor">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#User"/>
+        <owl:disjointWith rdf:resource="http://www.example.com.br/demo#Student"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#Rack -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Rack"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#RackAndromeda -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#RackAndromeda">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Rack"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#RackCosmos -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#RackCosmos">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Rack"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#RackFirewall -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#RackFirewall">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Rack"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#RackHalley -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#RackHalley">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Rack"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#Rol -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Rol"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#Room -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Room"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#ScientificResearch -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#ScientificResearch">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#ActivityUnder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#Sensor -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Sensor">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#SensorCO2 -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#SensorCO2">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#SensorHumidity -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#SensorHumidity">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#SensorPresence -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#SensorPresence">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#SensorTemperature -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#SensorTemperature">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Sensor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#Student -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#Student">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#User"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#StudentPostgraduate -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#StudentPostgraduate">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Student"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#StudentUnderground -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#StudentUnderground">
+        <rdfs:subClassOf rdf:resource="http://www.example.com.br/demo#Student"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.com.br/demo#System -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#System"/>
+    
+
+
+    <!-- http://www.example.com.br/demo#User -->
+
+    <owl:Class rdf:about="http://www.example.com.br/demo#User"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_aircond1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_aircond1">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetAirConditioning"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_aircond2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_aircond2">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetAirConditioning"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_aircond3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_aircond3">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetAirConditioning"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_aircond4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_aircond4">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetAirConditioning"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_aircond5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_aircond5">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetAirConditioning"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_door_datacenter -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_door_datacenter">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetDoor"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_door_lab1006 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_door_lab1006">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetDoor"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp1">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp10">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp11">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp12">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp2">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp3">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp4">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp5">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp6">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp7">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp8">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_lamp9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_lamp9">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetLamp"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_tv1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_tv1">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetTv"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_window1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_window1">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetWindow"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_window2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_window2">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetWindow"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_window3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_window3">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetWindow"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_window4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_window4">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetWindow"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_window5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_window5">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetWindow"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_window6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_window6">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetWindow"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_window7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_window7">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetWindow"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_window8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_window8">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetWindow"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#asset_window9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#asset_window9">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#AssetWindow"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#room1006 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#room1006">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#Room"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#room1008 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#room1008">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#Room"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_humidity1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_humidity1">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorHumidity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_humidity2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_humidity2">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorHumidity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_humidity3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_humidity3">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorHumidity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_humidity4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_humidity4">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorHumidity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_humidity5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_humidity5">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorHumidity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_humidity6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_humidity6">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorHumidity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_humidity7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_humidity7">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorHumidity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_presence1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_presence1">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorPresence"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+        <demo:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-1</demo:has_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_presence2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_presence2">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorPresence"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+        <demo:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-1</demo:has_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_temperature1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_temperature1">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorTemperature"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+        <demo:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-1.0</demo:has_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_temperature2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_temperature2">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorTemperature"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+        <demo:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-1.0</demo:has_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_temperature3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_temperature3">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorTemperature"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+        <demo:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-1.0</demo:has_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_temperature4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_temperature4">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorTemperature"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+        <demo:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-1.0</demo:has_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_temperature5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_temperature5">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorTemperature"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+        <demo:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-1.0</demo:has_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_temperature6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_temperature6">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorTemperature"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+        <demo:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-1.0</demo:has_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_temperature7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_temperature7">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorTemperature"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+        <demo:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-1.0</demo:has_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.com.br/demo#sensor_temperature_outside -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.com.br/demo#sensor_temperature_outside">
+        <rdf:type rdf:resource="http://www.example.com.br/demo#SensorTemperature"/>
+        <demo:installedIn rdf:resource="http://www.example.com.br/demo#room1006"/>
+        <demo:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-1.0</demo:has_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.example.com.br/demo#AssetAirConditioning"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#AssetAlarm"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#AssetDoor"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#AssetLamp"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#AssetPC"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#AssetServer"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#AssetWindow"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.example.com.br/demo#RackAndromeda"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#RackCosmos"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#RackFirewall"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#RackHalley"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.example.com.br/demo#SensorCO2"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#SensorHumidity"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#SensorPresence"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#SensorTemperature"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.example.com.br/demo#contain"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#installedIn"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#locatedIn"/>
+            <rdf:Description rdf:about="http://www.example.com.br/demo#participateIn"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

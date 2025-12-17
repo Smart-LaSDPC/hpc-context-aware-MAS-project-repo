@@ -1,11 +1,38 @@
-version: '3.8'
-
 services:
   masproject-admin:
-    image: masproject
+    image: masproject:latest
     build:
       context: .
       dockerfile: Dockerfile
-    ports:      
     container_name: masproject-admin
+
+    # =========================
+    # Configuración (runtime)
+    # =========================
+    environment:
+      # Healthcheck
+      HEALTH_PORT: "8081"
+
+      # MQTT configuration
+      MQTT_BROKER_URL: "tcp://127.0.0.1:1883"
+      MQTT_CLIENT_ID: "agent-masproject"
+      MQTT_USERNAME: "lasdpc"
+      MQTT_PASSWORD: "lasdpc"
+
+    # =========================
+    # Exposición de puertos
+    # =========================
+    ports:
+      - "8081:8081"
+
+    # =========================
+    # Control de ciclo de vida
+    # =========================
     restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8081/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s

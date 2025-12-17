@@ -1,30 +1,25 @@
-# Use an official Maven image with JDK 11 as the build environment
 FROM maven:3.8.4-openjdk-11 AS build
-
-# Set the working directory
 WORKDIR /app
 
-# Copy the pom.xml file and download the project dependencies
 COPY pom.xml ./
-RUN mvn dependency:go-offline
+RUN mvn -q -DskipTests dependency:go-offline
 
-# Copy the project files
 COPY src ./src
+COPY ontologies ./ontologies
+COPY APDescription.txt MTPs-Main-Container.txt ./
 
-# Build the project
-RUN mvn package
+RUN mvn -q -DskipTests package
 
-# Debug step: List the contents of the target directory
-RUN ls -l target
-
-# Use a smaller base image for the final stage
-FROM openjdk:11-jre-slim
-
-# Set the working directory
+FROM eclipse-temurin:11-jre-jammy
 WORKDIR /app
 
-# Copy the built jar file from the build stage
-COPY --from=build /app/target/MASProjectV2-0.0.1-SNAPSHOT.jar ./MASProjectV2.jar
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
-# Specify the command to run the application
-ENTRYPOINT ["java", "-jar", "MASProjectV2.jar"]
+COPY --from=build /app/target/MASProjectV25-0.0.1.jar /app/app.jar
+COPY --from=build /app/ontologies /app/ontologies
+COPY --from=build /app/APDescription.txt /app/MTPs-Main-Container.txt /app/
+
+ENV HEALTH_PORT=8081
+EXPOSE 8081
+
+ENTRYPOINT ["java","-jar","/app/app.jar"]

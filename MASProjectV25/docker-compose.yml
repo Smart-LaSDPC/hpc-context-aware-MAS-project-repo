@@ -14,10 +14,10 @@ services:
       HEALTH_PORT: "8081"
 
       # MQTT configuration
-      MQTT_BROKER_URL: "tcp://127.0.0.1:1883"
+      MQTT_BROKER_URL: "broker.hivemq.com:1883"
       MQTT_CLIENT_ID: "agent-masproject"
-      MQTT_USERNAME: "lasdpc"
-      MQTT_PASSWORD: "lasdpc"
+      MQTT_USERNAME: ""
+      MQTT_PASSWORD: ""
 
     # =========================
     # Exposición de puertos

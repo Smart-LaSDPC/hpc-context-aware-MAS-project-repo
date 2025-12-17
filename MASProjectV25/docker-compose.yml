@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: masproject-admin
+	
+	env_file: []  # 🔒 evita que Compose cargue .env automáticamente
 
     # =========================
     # Configuración (runtime)

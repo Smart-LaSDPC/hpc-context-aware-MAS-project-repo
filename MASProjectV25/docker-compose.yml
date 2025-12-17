@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   masproject-admin:
     image: masproject:latest
@@ -5,14 +7,17 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: masproject-admin
-	
-    env_file: []  # evita que Compose cargue .env automáticamente
+
+    # =========================
+    # ⚠️ Desactiva carga automática de `.env`
+    # =========================
+    env_file: []
 
     # =========================
     # Configuración (runtime)
     # =========================
     environment:
-      # Healthcheck
+      # Healthcheck port
       HEALTH_PORT: "8081"
 
       # MQTT configuration
@@ -32,6 +37,9 @@ services:
     # =========================
     restart: unless-stopped
 
+    # =========================
+    # Verificación de salud HTTP
+    # =========================
     healthcheck:
       test: ["CMD-SHELL", "curl -fsS http://localhost:8081/health || exit 1"]
       interval: 30s

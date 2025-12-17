@@ -14,14 +14,20 @@ public class MQTTSetupClient {
         String username  = getenv("MQTT_USERNAME", null);
         String password  = getenv("MQTT_PASSWORD", null);
     	
-        //client = new MqttClient("tcp://host.docker.internal:1883", "AgentMQTT");
-        client = new MqttClient(brokerUrl, clientId);
+        /*
+            MQTT_BROKER_URL: "andromeda.lasdpc.icmc.usp.br:6183"
+      		MQTT_CLIENT_ID: "agent-masproject"
+      		MQTT_USERNAME: "lasdpc"
+      		MQTT_PASSWORD: "l@sdpC10"        
+        */
+        client = new MqttClient("tcp://andromeda.lasdpc.icmc.usp.br:6183", "AgentMQTT");
+        //client = new MqttClient(brokerUrl, clientId);
         MqttConnectOptions options = new MqttConnectOptions();
         options.setCleanSession(true);
 
         // Set username and password for the MQTT broker
-        options.setUserName(username);
-        options.setPassword(password.toCharArray());
+        options.setUserName("lasdpc");
+        options.setPassword("l@sdpC10".toCharArray());
 
         client.connect(options);
     }

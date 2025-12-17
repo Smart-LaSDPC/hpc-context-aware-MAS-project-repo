@@ -14,10 +14,10 @@ services:
       HEALTH_PORT: "8081"
 
       # MQTT configuration
-      MQTT_BROKER_URL: "broker.hivemq.com:1883"
+      MQTT_BROKER_URL: "tcp://andromeda.lasdpc.icmc.usp.br:6183"
       MQTT_CLIENT_ID: "agent-masproject"
-      MQTT_USERNAME: ""
-      MQTT_PASSWORD: ""
+      MQTT_USERNAME: "lasdpc"
+      MQTT_PASSWORD: "l@sdpC10"
 
     # =========================
     # Exposición de puertos

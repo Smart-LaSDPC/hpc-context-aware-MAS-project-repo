@@ -1,17 +1,17 @@
 package br.icmc.lasdpc.utils;
 
-import org.apache.jena.reasoner.rulesys.BuiltinRegistry;
-import org.apache.jena.reasoner.rulesys.builtins.BaseBuiltin;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.graph.Node;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.reasoner.rulesys.RuleContext;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.reasoner.rulesys.BuiltinRegistry;
+import org.apache.jena.reasoner.rulesys.RuleContext;
+import org.apache.jena.reasoner.rulesys.builtins.BaseBuiltin;
 
 public class CustomFunctions2 {
 
@@ -22,6 +22,7 @@ public class CustomFunctions2 {
     }
 
     public static class GreaterThan extends BaseBuiltin {
+
         @Override
         public String getName() {
             return "greaterThan";
@@ -33,8 +34,12 @@ public class CustomFunctions2 {
             Node n2 = getArg(1, args, context);
 
             if (n1.isLiteral() && n2.isLiteral()) {
-                int value1 = Integer.valueOf(n1.getLiteralValue().toString());
-                int value2 = Integer.valueOf(n2.getLiteralValue().toString());
+                double value1 = Double.parseDouble(
+                    n1.getLiteralValue().toString()
+                );
+                double value2 = Double.parseDouble(
+                    n2.getLiteralValue().toString()
+                );
                 return value1 > value2;
             }
             return false;
@@ -42,6 +47,7 @@ public class CustomFunctions2 {
     }
 
     public static class LessThanOrEqual extends BaseBuiltin {
+
         @Override
         public String getName() {
             return "lessThanOrEqual";
@@ -53,8 +59,12 @@ public class CustomFunctions2 {
             Node n2 = getArg(1, args, context);
 
             if (n1.isLiteral() && n2.isLiteral()) {
-                int value1 = Integer.valueOf(n1.getLiteralValue().toString());
-                int value2 = Integer.valueOf(n2.getLiteralValue().toString());
+                double value1 = Double.parseDouble(
+                    n1.getLiteralValue().toString()
+                );
+                double value2 = Double.parseDouble(
+                    n2.getLiteralValue().toString()
+                );
                 return value1 <= value2;
             }
             return false;
@@ -62,6 +72,7 @@ public class CustomFunctions2 {
     }
 
     public static class ChangeStateProperty extends BaseBuiltin {
+
         @Override
         public String getName() {
             return "changeStateProperty";
@@ -88,8 +99,9 @@ public class CustomFunctions2 {
             return true; // This function does not need to be used in the body
         }
     }
-    
+
     public static class ChangeStatePropertyInteger extends BaseBuiltin {
+
         @Override
         public String getName() {
             return "changeStatePropertyInteger";
@@ -97,34 +109,37 @@ public class CustomFunctions2 {
 
         @Override
         public void headAction(Node[] args, int length, RuleContext context) {
-        	//System.out.println(":::::::::::::::::::::::::::::::> Into in ChangeStatePropertyInteger")        	
-            Node n1 = getArg(0, args, context);// Id of Lamp :> http://www.ex.com/demox/lamp6
-            Node n2 = getArg(1, args, context);// Data property :> http://www.ex.com/demox/has_state
-            Node n3 = getArg(2, args, context);// Value :> -5
-                        
-            if (model != null) {                              	
-            	Resource subject = model.getResource(n1.getURI());
+            //System.out.println(":::::::::::::::::::::::::::::::> Into in ChangeStatePropertyInteger")
+            Node n1 = getArg(0, args, context); // Id of Lamp :> http://www.ex.com/demox/lamp6
+            Node n2 = getArg(1, args, context); // Data property :> http://www.ex.com/demox/has_state
+            Node n3 = getArg(2, args, context); // Value :> -5
+
+            if (model != null) {
+                Resource subject = model.getResource(n1.getURI());
                 Property predicate = model.getProperty(n2.getURI());
-                int intValue = Integer.parseInt(n3.getLiteralValue().toString());
-                Literal literalValue = model.createTypedLiteral(intValue, XSDDatatype.XSDinteger);                
+                int intValue = Integer.parseInt(
+                    n3.getLiteralValue().toString()
+                );
+                Literal literalValue = model.createTypedLiteral(
+                    intValue,
+                    XSDDatatype.XSDinteger
+                );
                 //System.out.println("subject>>>>>>> " + subject);
                 //System.out.println("predicate>>>>> " + predicate);
-                //System.out.println("literalValue>>>>> " + literalValue);                
+                //System.out.println("literalValue>>>>> " + literalValue);
                 model.removeAll(subject, predicate, null);
-                model.add(subject, predicate, literalValue);                
+                model.add(subject, predicate, literalValue);
             }
         }
 
         @Override
         public boolean bodyCall(Node[] args, int length, RuleContext context) {
-        	
             return true; // This function does not need to be used in the body
         }
     }
-    
-    
+
     public static class ChangeStatePropertyString extends BaseBuiltin {
-        
+
         @Override
         public String getName() {
             return "changeStatePropertyString";
@@ -138,16 +153,16 @@ public class CustomFunctions2 {
             Node n1 = getArg(0, args, context); // Resource: the subject, e.g., http://www.ex.com/demox/room1
             Node n2 = getArg(1, args, context); // Property: the predicate, e.g., http://www.ex.com/demox/has_occupancy_status
             Node n3 = getArg(2, args, context); // String value: e.g., "unoccupied"
-            
+
             if (model != null) {
                 // Get the subject as a resource and the predicate as a property
                 Resource subject = model.getResource(n1.getURI());
                 Property predicate = model.getProperty(n2.getURI());
                 String stringValue = n3.getLiteralValue().toString(); // Convert to string
-                
+
                 // Create a string literal for the value
                 Literal literalValue = model.createLiteral(stringValue);
-                
+
                 // Remove the old value and add the new string value to the model
                 model.removeAll(subject, predicate, null);
                 model.add(subject, predicate, literalValue);
@@ -159,7 +174,6 @@ public class CustomFunctions2 {
             return true; // No need for body logic, just return true
         }
     }
-
 
     public static void registerCustomFunctions() {
         BuiltinRegistry.theRegistry.register(new GreaterThan());

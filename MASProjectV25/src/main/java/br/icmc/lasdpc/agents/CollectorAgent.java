@@ -66,15 +66,21 @@ public class CollectorAgent extends Agent {
                 new TickerBehaviour(this, 20000) {
                     @Override
                     protected void onTick() {
-                        System.out.println(
-                            ">>>>>>> onTick ejecutado. Sensores: " +
-                                sensors.size() +
-                                ", Assets: " +
-                                assetsgroup.size()
-                        );
                         if (!assetsgroup.isEmpty() || !sensors.isEmpty()) {
-                            double sum = 0;
-                            int count = 0;
+                            double sumServers = 0,
+                                sumPeople = 0;
+                            int countServers = 0,
+                                countPeople = 0;
+
+                            java.util.Set<String> serverSensors =
+                                new java.util.HashSet<>(
+                                    java.util.Arrays.asList(
+                                        "sensor_temperature1",
+                                        "sensor_temperature2",
+                                        "sensor_temperature3"
+                                    )
+                                );
+
                             for (Sensor sensor : sensors.values()) {
                                 if (
                                     sensor
@@ -82,29 +88,72 @@ public class CollectorAgent extends Agent {
                                         .contains("SensorTemperature")
                                 ) {
                                     try {
-                                        sum += Double.parseDouble(
+                                        double val = Double.parseDouble(
                                             sensor.getSensedValue()
                                         );
-                                        count++;
+                                        if (
+                                            serverSensors.contains(
+                                                sensor.getId()
+                                            )
+                                        ) {
+                                            sumServers += val;
+                                            countServers++;
+                                        } else {
+                                            sumPeople += val;
+                                            countPeople++;
+                                        }
                                     } catch (NumberFormatException e) {
                                         System.out.println(
-                                            "Valor inválido en sensor: " +
+                                            "Invalid value from sensor: " +
                                                 sensor.getId()
                                         );
                                     }
                                 }
                             }
 
-                            if (count > 0) {
-                                double average = sum / count;
+                            if (countServers > 0) {
+                                double avg = sumServers / countServers;
                                 System.out.printf(
-                                    "Temperatura promedio (%d sensores): %.2f°C%n",
-                                    count,
-                                    average
+                                    "Average temperature for servers (%d sensors): %.2f°C%n",
+                                    countServers,
+                                    avg
                                 );
-                            } else {
-                                System.out.println(
-                                    "No hay sensores de temperatura disponibles en este ciclo."
+                                sensors.put(
+                                    "sensor_temperature_avg_servers",
+                                    new Sensor(
+                                        "SensorTemperature",
+                                        "sensor_temperature_avg_servers",
+                                        "collector-internal",
+                                        String.format(
+                                            java.util.Locale.US,
+                                            "%.2f",
+                                            avg
+                                        ),
+                                        ""
+                                    )
+                                );
+                            }
+
+                            if (countPeople > 0) {
+                                double avg = sumPeople / countPeople;
+                                System.out.printf(
+                                    "Average temperature for people (%d sensors): %.2f°C%n",
+                                    countPeople,
+                                    avg
+                                );
+                                sensors.put(
+                                    "sensor_temperature_avg_people",
+                                    new Sensor(
+                                        "SensorTemperature",
+                                        "sensor_temperature_avg_people",
+                                        "collector-internal",
+                                        String.format(
+                                            java.util.Locale.US,
+                                            "%.2f",
+                                            avg
+                                        ),
+                                        ""
+                                    )
                                 );
                             }
 

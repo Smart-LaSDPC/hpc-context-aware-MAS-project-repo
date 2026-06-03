@@ -20,14 +20,14 @@ public class MQTTSetupClient {
       		MQTT_USERNAME: "lasdpc"
       		MQTT_PASSWORD: "l@sdpC10"        
         */
-        client = new MqttClient("tcp://andromeda.lasdpc.icmc.usp.br:6183", "AgentMQTT");
-        //client = new MqttClient(brokerUrl, clientId);
+        // client = new MqttClient("tcp://andromeda.lasdpc.icmc.usp.br:6183", "AgentMQTT");
+        client = new MqttClient(brokerUrl, clientId);
         MqttConnectOptions options = new MqttConnectOptions();
         options.setCleanSession(true);
 
         // Set username and password for the MQTT broker
-        options.setUserName("lasdpc");
-        options.setPassword("l@sdpC10".toCharArray());
+        options.setUserName("mqtt");
+        options.setPassword("lasdpc".toCharArray());
 
         client.connect(options);
     }

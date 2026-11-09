@@ -90,6 +90,8 @@ public class ReasonerAgent extends Agent {
 
         Property hasStateProperty = model.getProperty(demoxNs + "has_state");
         Property hasValueProperty = model.getProperty(demoxNs + "has_value");
+        // Role of the user detected by a presence sensor (used by the data center access rules)
+        Property detectedRoleProperty = model.createDatatypeProperty(demoxNs + "detected_role");
 
         // Get all individuals of type AssetLamp
         OntClass assetLampClass = model.getOntClass(demoxNs + "AssetLamp");
@@ -123,6 +125,7 @@ public class ReasonerAgent extends Agent {
                     "Removing SensorPresence: " + ind.getLocalName()
                 );
             }
+            ind.removeAll(detectedRoleProperty);
         }
 
         //Get all individuals of type sensorTemperature
@@ -217,6 +220,12 @@ public class ReasonerAgent extends Agent {
                         XSDDatatype.XSDinteger
                     )
                 );
+                if (sensor.getPresence() != null && sensor.getPresence().getRol() != null) {
+                    sPresence.addProperty(detectedRoleProperty, sensor.getPresence().getRol());
+                    System.out.println(
+                        "Presence " + sensor.getId() + " role: " + sensor.getPresence().getRol()
+                    );
+                }
             } else if (sensor.getType().contains("SensorTemperature")) {
                 Individual sTemperature = model.createIndividual(
                     demoxNs + sensor.getId(),
@@ -250,16 +259,18 @@ public class ReasonerAgent extends Agent {
             "[r4: (?r rdf:type eg:Room), (eg:sensor_presence2 eg:has_value 0), (?s eg:installedIn ?r) -> changeStatePropertyString(?r, eg:has_occupancy_status, 'unoccupied')] " +
             // Rule to classify room as "occupied" based on sensor data
             "[r5: (?r rdf:type eg:Room), (eg:sensor_presence2 eg:has_value 1), (?s eg:installedIn ?r) -> changeStatePropertyString(?r, eg:has_occupancy_status, 'occupied')] " +
-            // Rule to turn on the AC if the average temperature is more than 26º
-            "[r6: (?a rdf:type eg:AssetAirConditioning), (eg:sensor_temperature_avg eg:has_value ?v), greaterThan(?v, 22.0) -> changeStatePropertyInteger(?a, eg:has_state, 1)]" +
-            // Rule to turn off the AC if the average temperature is less than 22º
-            "[r7: (?a rdf:type eg:AssetAirConditioning), (eg:sensor_temperature_avg eg:has_value ?v), lessThanOrEqual(?v, 22.0) -> changeStatePropertyInteger(?a, eg:has_state, 0)]" +
             // Server room temperature control 17°C
-            "[r6:  (eg:sensor_temperature_avg_servers eg:has_value ?v), greaterThan(?v, 17.0) -> changeStatePropertyInteger(eg:asset_aircond1, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond2, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond3, eg:has_state, 1)]" +
-            "[r7:  (eg:sensor_temperature_avg_servers eg:has_value ?v), lessThanOrEqual(?v, 17.0) -> changeStatePropertyInteger(eg:asset_aircond1, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond2, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond3, eg:has_state, 0)]" +
+            "[r6: (eg:sensor_temperature_avg_servers eg:has_value ?v), greaterThan(?v, 17.0) -> changeStatePropertyInteger(eg:asset_aircond1, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond2, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond3, eg:has_state, 1)]" +
+            "[r7: (eg:sensor_temperature_avg_servers eg:has_value ?v), lessThanOrEqual(?v, 17.0) -> changeStatePropertyInteger(eg:asset_aircond1, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond2, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond3, eg:has_state, 0)]" +
             // People room temperature control 22°C
-            "[r8:  (eg:sensor_temperature_avg_people eg:has_value ?v), greaterThan(?v, 22.0) -> changeStatePropertyInteger(eg:asset_aircond4, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond5, eg:has_state, 1)]" +
-            "[r9:  (eg:sensor_temperature_avg_people eg:has_value ?v), lessThanOrEqual(?v, 22.0) -> changeStatePropertyInteger(eg:asset_aircond4, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond5, eg:has_state, 0)]";
+            "[r8: (eg:sensor_temperature_avg_people eg:has_value ?v), greaterThan(?v, 22.0) -> changeStatePropertyInteger(eg:asset_aircond4, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond5, eg:has_state, 1)]" +
+            "[r9: (eg:sensor_temperature_avg_people eg:has_value ?v), lessThanOrEqual(?v, 22.0) -> changeStatePropertyInteger(eg:asset_aircond4, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond5, eg:has_state, 0)]" +
+            // Data center access: only a professor detected at the data center door opens it
+            "[r10: (eg:sensor_presence3 eg:has_value 1), (eg:sensor_presence3 eg:detected_role 'Professor') -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 1)]" +
+            // Any other role keeps the data center door closed
+            "[r11: (eg:sensor_presence3 eg:has_value 1), (eg:sensor_presence3 eg:detected_role ?r), notEqual(?r, 'Professor') -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 0)]" +
+            // Nobody at the data center door: close it
+            "[r12: (eg:sensor_presence3 eg:has_value 0) -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 0)]";
         // Combine your original rules with the new ones
         //String combinedRules = rules + additionalRules;
 

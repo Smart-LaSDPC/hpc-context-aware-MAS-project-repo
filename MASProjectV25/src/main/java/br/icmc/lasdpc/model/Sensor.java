@@ -11,6 +11,30 @@ public class Sensor extends Device {
     @SerializedName("sensed_value")
     private String sensedValue;
 
+    // User detected by a presence sensor (sent by the Smart-Lab Simulator); null for other sensors
+    @SerializedName("presence")
+    private Presence presence;
+
+    public Presence getPresence() {
+        return presence;
+    }
+
+    public static class Presence {
+        @SerializedName("id_user")
+        private String idUser;
+
+        @SerializedName("rol")
+        private String rol;
+
+        public String getIdUser() {
+            return idUser;
+        }
+
+        public String getRol() {
+            return rol;
+        }
+    }
+
     public Sensor(String type, String id, String mqttClientId, String sensedValue, String dateTime) {
         super(type, id, mqttClientId, dateTime);
         this.sensedValue = sensedValue;

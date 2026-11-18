@@ -51,6 +51,14 @@ public class CollectorAgent extends Agent {
                                 System.out.println(
                                     "Received Sensor message: " + sensor
                                 );
+                                if (sensor.getPresence() != null) {
+                                    System.out.println(
+                                        "Presence metadata detected -> user: " +
+                                            sensor.getPresence().getIdUser() +
+                                            ", role: " +
+                                            sensor.getPresence().getRol()
+                                    );
+                                }
                             }
                         } else if (topic.startsWith("lab1006/control/assets")) {
                             handleControlAssetsMessage(payload);

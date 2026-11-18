@@ -90,6 +90,8 @@ public class ReasonerAgent extends Agent {
 
         Property hasStateProperty = model.getProperty(demoxNs + "has_state");
         Property hasValueProperty = model.getProperty(demoxNs + "has_value");
+        Property detectedRoleProperty = model.createDatatypeProperty(demoxNs + "detected_role");
+        Property detectedUserProperty = model.createDatatypeProperty(demoxNs + "detected_user");
 
         // Get all individuals of type AssetLamp
         OntClass assetLampClass = model.getOntClass(demoxNs + "AssetLamp");
@@ -122,6 +124,12 @@ public class ReasonerAgent extends Agent {
                 System.out.println(
                     "Removing SensorPresence: " + ind.getLocalName()
                 );
+            }
+            if (ind.hasProperty(detectedRoleProperty)) {
+                ind.removeAll(detectedRoleProperty);
+            }
+            if (ind.hasProperty(detectedUserProperty)) {
+                ind.removeAll(detectedUserProperty);
             }
         }
 
@@ -217,6 +225,34 @@ public class ReasonerAgent extends Agent {
                         XSDDatatype.XSDinteger
                     )
                 );
+                if (sensor.getPresence() != null) {
+                    if (sensor.getPresence().getRol() != null) {
+                        String rawRole = sensor.getPresence().getRol().trim();
+                        String normalizedRole = rawRole.toLowerCase();
+                        if (normalizedRole.equals("student_undergraduate")) {
+                            normalizedRole = "student_underground";
+                        }
+                        sPresence.addProperty(
+                            detectedRoleProperty,
+                            model.createTypedLiteral(normalizedRole, XSDDatatype.XSDstring)
+                        );
+                        if (!normalizedRole.equals(rawRole)) {
+                            sPresence.addProperty(
+                                detectedRoleProperty,
+                                model.createTypedLiteral(rawRole, XSDDatatype.XSDstring)
+                            );
+                        }
+                        System.out.println(
+                            "Sensor " + sensor.getId() + " detected role: " + rawRole + " (normalized: " + normalizedRole + ")"
+                        );
+                    }
+                    if (sensor.getPresence().getIdUser() != null) {
+                        sPresence.addProperty(
+                            detectedUserProperty,
+                            model.createTypedLiteral(sensor.getPresence().getIdUser().trim(), XSDDatatype.XSDstring)
+                        );
+                    }
+                }
             } else if (sensor.getType().contains("SensorTemperature")) {
                 Individual sTemperature = model.createIndividual(
                     demoxNs + sensor.getId(),
@@ -238,28 +274,64 @@ public class ReasonerAgent extends Agent {
 
         // Create rule
         String rules =
-            // Rule to turn off the lamps when anybody stay on the laboratory.
-            //"[r1: (?l rdf:type eg:AssetLamp), (?s rdf:type eg:SensorPresence), (?s eg:has_value 0) -> changeStatePropertyInteger(?l, eg:has_state, 0)]"+
+            // Rule to turn off the lamps when nobody stays in the laboratory.
             "[r1: (?l rdf:type eg:AssetLamp), (eg:sensor_presence1 eg:has_value 0), (eg:sensor_presence2 eg:has_value 0) -> changeStatePropertyInteger(?l, eg:has_state, 0)]" +
-            // Rule to turn ON when recognise a user on front of the door.
-            "[r2: (?l rdf:type eg:AssetLamp), (?l eg:has_state 0), (eg:sensor_presence1 eg:has_value 1) -> changeStatePropertyInteger(?l, eg:has_state, 1), changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 1)]" +
-            //Rule to CLOSE the door when not recognise a user on front of the door.
-            "[r3: (eg:asset_door_lab1006 eg:has_state 1), (eg:sensor_presence1 eg:has_value 0) -> changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 0)]" +
+
+            // --- LAB 1006 DOOR ACCESS (sensor_presence1 -> asset_door_lab1006) ---
+            // Professor, student_postgraduate, and student_underground have access to the laboratory
+            "[r2_door_prof: (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'professor') -> changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 1)]" +
+            "[r2_door_prof_cap: (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'Professor') -> changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 1)]" +
+            "[r2_door_post: (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'student_postgraduate') -> changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 1)]" +
+            "[r2_door_post_cap: (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'StudentPostgraduate') -> changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 1)]" +
+            "[r2_door_under: (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'student_underground') -> changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 1)]" +
+            "[r2_door_under_cap: (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'StudentUnderground') -> changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 1)]" +
+
+            // Turn ON lamps when an authorized user is detected in front of the lab door
+            "[r2_lamp_prof: (?l rdf:type eg:AssetLamp), (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'professor') -> changeStatePropertyInteger(?l, eg:has_state, 1)]" +
+            "[r2_lamp_prof_cap: (?l rdf:type eg:AssetLamp), (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'Professor') -> changeStatePropertyInteger(?l, eg:has_state, 1)]" +
+            "[r2_lamp_post: (?l rdf:type eg:AssetLamp), (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'student_postgraduate') -> changeStatePropertyInteger(?l, eg:has_state, 1)]" +
+            "[r2_lamp_post_cap: (?l rdf:type eg:AssetLamp), (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'StudentPostgraduate') -> changeStatePropertyInteger(?l, eg:has_state, 1)]" +
+            "[r2_lamp_under: (?l rdf:type eg:AssetLamp), (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'student_underground') -> changeStatePropertyInteger(?l, eg:has_state, 1)]" +
+            "[r2_lamp_under_cap: (?l rdf:type eg:AssetLamp), (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'StudentUnderground') -> changeStatePropertyInteger(?l, eg:has_state, 1)]" +
+
+            // Unknowing user: access denied to laboratory (door remains/set to closed)
+            "[r2_deny_unknowing: (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'unknowing') -> changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 0)]" +
+            "[r2_deny_unknowing_cap: (eg:sensor_presence1 eg:has_value 1), (eg:sensor_presence1 eg:detected_role 'Unknowing') -> changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 0)]" +
+
+            // Rule to CLOSE lab door when no presence is detected in front of the door
+            "[r3: (eg:sensor_presence1 eg:has_value 0) -> changeStatePropertyInteger(eg:asset_door_lab1006, eg:has_state, 0)]" +
+
+            // --- DATA CENTER DOOR ACCESS (sensor_presence2 -> asset_door_datacenter) ---
+            // ONLY Professor has access to the Data Center
+            "[r22_door_prof: (eg:sensor_presence2 eg:has_value 1), (eg:sensor_presence2 eg:detected_role 'professor') -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 1)]" +
+            "[r22_door_prof_cap: (eg:sensor_presence2 eg:has_value 1), (eg:sensor_presence2 eg:detected_role 'Professor') -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 1)]" +
+
+            // Turn ON lamps when Professor is detected in front of Data Center door
+            "[r22_lamp_prof: (?l rdf:type eg:AssetLamp), (eg:sensor_presence2 eg:has_value 1), (eg:sensor_presence2 eg:detected_role 'professor') -> changeStatePropertyInteger(?l, eg:has_state, 1)]" +
+            "[r22_lamp_prof_cap: (?l rdf:type eg:AssetLamp), (eg:sensor_presence2 eg:has_value 1), (eg:sensor_presence2 eg:detected_role 'Professor') -> changeStatePropertyInteger(?l, eg:has_state, 1)]" +
+
+            // Students and unknowing: access denied to Data Center
+            "[r22_deny_post: (eg:sensor_presence2 eg:has_value 1), (eg:sensor_presence2 eg:detected_role 'student_postgraduate') -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 0)]" +
+            "[r22_deny_post_cap: (eg:sensor_presence2 eg:has_value 1), (eg:sensor_presence2 eg:detected_role 'StudentPostgraduate') -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 0)]" +
+            "[r22_deny_under: (eg:sensor_presence2 eg:has_value 1), (eg:sensor_presence2 eg:detected_role 'student_underground') -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 0)]" +
+            "[r22_deny_under_cap: (eg:sensor_presence2 eg:has_value 1), (eg:sensor_presence2 eg:detected_role 'StudentUnderground') -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 0)]" +
+            "[r22_deny_unknowing: (eg:sensor_presence2 eg:has_value 1), (eg:sensor_presence2 eg:detected_role 'unknowing') -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 0)]" +
+            "[r22_deny_unknowing_cap: (eg:sensor_presence2 eg:has_value 1), (eg:sensor_presence2 eg:detected_role 'Unknowing') -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 0)]" +
+
+            // Rule to CLOSE Data Center door when no presence is detected in front of the door
+            "[r33: (eg:sensor_presence2 eg:has_value 0) -> changeStatePropertyInteger(eg:asset_door_datacenter, eg:has_state, 0)]" +
+
             // Additional rules
             // Rule to classify room as "unoccupied" based on sensor data
             "[r4: (?r rdf:type eg:Room), (eg:sensor_presence2 eg:has_value 0), (?s eg:installedIn ?r) -> changeStatePropertyString(?r, eg:has_occupancy_status, 'unoccupied')] " +
             // Rule to classify room as "occupied" based on sensor data
             "[r5: (?r rdf:type eg:Room), (eg:sensor_presence2 eg:has_value 1), (?s eg:installedIn ?r) -> changeStatePropertyString(?r, eg:has_occupancy_status, 'occupied')] " +
-            // Rule to turn on the AC if the average temperature is more than 26º
-            "[r6: (?a rdf:type eg:AssetAirConditioning), (eg:sensor_temperature_avg eg:has_value ?v), greaterThan(?v, 22.0) -> changeStatePropertyInteger(?a, eg:has_state, 1)]" +
-            // Rule to turn off the AC if the average temperature is less than 22º
-            "[r7: (?a rdf:type eg:AssetAirConditioning), (eg:sensor_temperature_avg eg:has_value ?v), lessThanOrEqual(?v, 22.0) -> changeStatePropertyInteger(?a, eg:has_state, 0)]" +
             // Server room temperature control 17°C
-            "[r6:  (eg:sensor_temperature_avg_servers eg:has_value ?v), greaterThan(?v, 17.0) -> changeStatePropertyInteger(eg:asset_aircond1, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond2, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond3, eg:has_state, 1)]" +
-            "[r7:  (eg:sensor_temperature_avg_servers eg:has_value ?v), lessThanOrEqual(?v, 17.0) -> changeStatePropertyInteger(eg:asset_aircond1, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond2, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond3, eg:has_state, 0)]" +
+            "[r6: (eg:sensor_temperature_avg_servers eg:has_value ?v), greaterThan(?v, 17.0) -> changeStatePropertyInteger(eg:asset_aircond1, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond2, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond3, eg:has_state, 1)]" +
+            "[r7: (eg:sensor_temperature_avg_servers eg:has_value ?v), lessThanOrEqual(?v, 17.0) -> changeStatePropertyInteger(eg:asset_aircond1, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond2, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond3, eg:has_state, 0)]" +
             // People room temperature control 22°C
-            "[r8:  (eg:sensor_temperature_avg_people eg:has_value ?v), greaterThan(?v, 22.0) -> changeStatePropertyInteger(eg:asset_aircond4, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond5, eg:has_state, 1)]" +
-            "[r9:  (eg:sensor_temperature_avg_people eg:has_value ?v), lessThanOrEqual(?v, 22.0) -> changeStatePropertyInteger(eg:asset_aircond4, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond5, eg:has_state, 0)]";
+            "[r8: (eg:sensor_temperature_avg_people eg:has_value ?v), greaterThan(?v, 22.0) -> changeStatePropertyInteger(eg:asset_aircond4, eg:has_state, 1), changeStatePropertyInteger(eg:asset_aircond5, eg:has_state, 1)]" +
+            "[r9: (eg:sensor_temperature_avg_people eg:has_value ?v), lessThanOrEqual(?v, 22.0) -> changeStatePropertyInteger(eg:asset_aircond4, eg:has_state, 0), changeStatePropertyInteger(eg:asset_aircond5, eg:has_state, 0)]";
         // Combine your original rules with the new ones
         //String combinedRules = rules + additionalRules;
 
@@ -299,12 +371,12 @@ public class ReasonerAgent extends Agent {
 
     private void sendModels(OntModel model, InfModel infModel) {
         try {
-            ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-            msg.addReceiver(getAID("ControlAgent"));
-
             // Serialize the models to strings
             String modelString = modelToString(model);
             String infModelString = modelToString(infModel);
+
+            ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+            msg.addReceiver(getAID("ControlAgent"));
 
             // Set the models as message content
             msg.setContent(modelString + "\n---\n" + infModelString);

@@ -39,7 +39,17 @@
         <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#DataCenter"/>
         <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#Rack"/>
     </owl:ObjectProperty>
-    
+
+
+
+    <!-- http://www.icmc.usp.br/smartlasdpc#has -->
+
+    <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#has">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#Laboratory"/>
+        <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#Room"/>
+    </owl:ObjectProperty>
+  
 
 
     <!-- http://www.icmc.usp.br/smartlasdpc#installedIn -->
@@ -89,7 +99,17 @@
         <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#StudentPostgraduate"/>
         <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#ActivityPost"/>
     </owl:ObjectProperty>
-    
+
+
+
+    <!-- http://www.icmc.usp.br/smartlasdpc#using -->
+
+    <owl:ObjectProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#using">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#User"/>
+        <rdfs:range rdf:resource="http://www.icmc.usp.br/smartlasdpc#Asset"/>
+    </owl:ObjectProperty>
+
 
 
     <!-- 
@@ -123,7 +143,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#has_state">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#AssetLamp"/>
+        <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#Asset"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
@@ -135,6 +155,26 @@
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#Sensor"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.icmc.usp.br/smartlasdpc#detected_role -->
+
+    <owl:DatatypeProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#detected_role">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#SensorPresence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.icmc.usp.br/smartlasdpc#detected_user -->
+
+    <owl:DatatypeProperty rdf:about="http://www.icmc.usp.br/smartlasdpc#detected_user">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.icmc.usp.br/smartlasdpc#SensorPresence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 

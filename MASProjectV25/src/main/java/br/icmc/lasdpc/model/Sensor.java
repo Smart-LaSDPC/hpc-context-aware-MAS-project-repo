@@ -11,13 +11,69 @@ public class Sensor extends Device {
     @SerializedName("sensed_value")
     private String sensedValue;
 
+    @SerializedName("presence")
+    private Presence presence;
+
+    public static class Presence {
+        @SerializedName("id_user")
+        private String idUser;
+
+        @SerializedName("rol")
+        private String rol;
+
+        public Presence() {}
+
+        public Presence(String idUser, String rol) {
+            this.idUser = idUser;
+            this.rol = rol;
+        }
+
+        public String getIdUser() {
+            return idUser;
+        }
+
+        public void setIdUser(String idUser) {
+            this.idUser = idUser;
+        }
+
+        public String getRol() {
+            return rol;
+        }
+
+        public void setRol(String rol) {
+            this.rol = rol;
+        }
+
+        @Override
+        public String toString() {
+            return "Presence{" +
+                    "idUser='" + idUser + '\'' +
+                    ", rol='" + rol + '\'' +
+                    '}';
+        }
+    }
+
     public Sensor(String type, String id, String mqttClientId, String sensedValue, String dateTime) {
         super(type, id, mqttClientId, dateTime);
         this.sensedValue = sensedValue;
     }
 
+    public Sensor(String type, String id, String mqttClientId, String sensedValue, String dateTime, Presence presence) {
+        super(type, id, mqttClientId, dateTime);
+        this.sensedValue = sensedValue;
+        this.presence = presence;
+    }
+
     public String getSensedValue() {
         return sensedValue; //I consider string because exist different type of sensor eg int, double and boolean values.
+    }
+
+    public Presence getPresence() {
+        return presence;
+    }
+
+    public void setPresence(Presence presence) {
+        this.presence = presence;
     }
 
     public static Sensor fromJson(String json) {
@@ -44,6 +100,7 @@ public class Sensor extends Device {
                 ", mqttClientId='" + getMqttClientId() + '\'' +
                 ", sensedValue='" + sensedValue + '\'' +
                 ", dateTime='" + getDateTime() + '\'' +
+                (presence != null ? ", presence=" + presence : "") +
                 '}';
     }
 }
